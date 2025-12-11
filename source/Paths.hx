@@ -178,6 +178,11 @@ class Paths
 		return if (library == "preload" || library == "default") getPreloadPath(file); else getLibraryPathForce(file, library);
 	}
 
+	inline public static function getSharedPath(file:String = '')
+	{
+		return 'assets/shared/$file';
+	}
+
 	inline static function getLibraryPathForce(file:String, library:String)
 	{
 		var returnPath = '$library:assets/$library/$file';
@@ -467,11 +472,6 @@ class Paths
 
 	inline static public function modsFont(key:String) {
 		return modFolders('fonts/' + key);
-	}
-
-	inline public static function getSharedPath(file:String = '')
-	{
-		return 'assets/shared/$file';
 	}
 
 	inline static public function modsJson(key:String) {
