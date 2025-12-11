@@ -32,7 +32,12 @@ import sys.io.Process;
 import sys.thread.Thread;
 #end
 
+#if mobile
+import mobile.util.MobileUtil;
+#end
+
 using StringTools;
+
 #if windows
 @:buildXml('
 <target id="haxe">
@@ -141,6 +146,16 @@ class Main extends Sprite
 	private function setupGame():Void
 	{
 		FlxG.stage.quality = BEST;
+
+        #if mobile
+		Sys.setCwd(haxe.io.Path.addTrailingSlash(MobileUtil.getDirectory()));
+		MobileUtil.getPermissions();
+
+		// Data folder
+		if (!MobileUtil.areAssetsCopied("assets/"))
+			MobileUtil.copyAssetsFromAPK("assets/");
+		#end
+		
 		Controls.instance = new Controls();
 		ClientPrefs.loadDefaultKeys();
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, #if (flixel < "5.0.0") 1, #end framerate, framerate, skipSplash, startFullscreen));
