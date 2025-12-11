@@ -33,14 +33,14 @@ import sys.thread.Thread;
 #end
 
 using StringTools;
-
+#if windows
 @:buildXml('
 <target id="haxe">
 	<lib name="wininet.lib" if="windows" />
 	<lib name="dwmapi.lib" if="windows" />
 </target>
 ')
-#if windows
+
 @:cppFileCode('
 #include <windows.h>
 #include <winuser.h>
@@ -92,6 +92,7 @@ class Main extends Sprite
 		untyped __cpp__("SetProcessDPIAware();");
 		#end
 		
+		#if windows
 		var display = lime.system.System.getDisplay(0);
 		if (display != null) {
 			var dpiScale:Float = display.dpi / 96;
@@ -101,6 +102,7 @@ class Main extends Sprite
 			Application.current.window.x = Std.int((Application.current.window.display.bounds.width - Application.current.window.width) / 2);
 			Application.current.window.y = Std.int((Application.current.window.display.bounds.height - Application.current.window.height) / 2);
 		}
+		#end
 
 		super();
 
@@ -148,7 +150,6 @@ class Main extends Sprite
 			gameThreads.push(Thread.createWithEventLoop(function() {Thread.current().events.promise();}));
 		#end
 
-		#if !mobile
 		fpsVar = new FPSCounter(10, 3, 0xFFFFFF);
 		addChild(fpsVar);
 		Lib.current.stage.align = "tl";
@@ -156,7 +157,6 @@ class Main extends Sprite
 		if(fpsVar != null) {
 			fpsVar.visible = ClientPrefs.data.showFPS;
 		}
-		#end
 
 		DoorsVideoSprite.init();
 		MenuSongManager.init();
