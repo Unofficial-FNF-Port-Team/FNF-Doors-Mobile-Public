@@ -37,9 +37,6 @@ class SoftLight extends FlxBasic{
 class SoftLightGLSL extends FlxShader{
     @:glFragmentSource('
         #pragma header
-        vec2 uv = openfl_TextureCoordv.xy;
-        vec2 fragCoord = openfl_TextureCoordv*openfl_TextureSize;
-        vec2 iResolution = openfl_TextureSize;
         uniform float iTime;
         uniform sampler2D bitmapOverlay;
         uniform float bitmapAlpha;
@@ -57,6 +54,7 @@ class SoftLightGLSL extends FlxShader{
         
         void mainImage()
         {
+            vec2 uv = openfl_TextureCoordv.xy;
 			vec4 base = texture2D(bitmap, uv);
             vec4 blend = texture2D(bitmapOverlay, uv);
             blend.a = bitmapAlpha;
