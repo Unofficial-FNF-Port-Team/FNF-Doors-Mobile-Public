@@ -77,7 +77,7 @@
 	</section>
 	
 	<assets path="assets/videos"        library="videos"        if="VIDEOS_ALLOWED"/>
-	<assets path="assets/lang"       	/>
+	<assets path="assets/lang"       	library="lang"          />
 	<assets path="assets/songs"         library="songs"         exclude="*.ogg" if="web"/>
 	<assets path="assets/songs"         library="songs"         exclude="*.mp3" unless="web"/>
 	<assets path="assets/shared"        library="shared"        exclude="*.ogg" if="web"/>
@@ -99,8 +99,8 @@
 	<!-- _______________________________ Libraries ______________________________ -->
 
 	<!-- Defines -->
-	<define name="GLASSHAT" if="final"/>
-	<define name="DISCORD" if="desktop"/>
+	<define name="GLASSHAT" if="final" />
+	<define name="DISCORD" if="desktop" />
 	<define name="CRASH_HANDLER" if="desktop" />
 	<haxedef name="openfl-enable-handle-error" />
 	<haxedef name="HXVLC_NO_SHARE_DIRECTORY" if="VIDEOS_ALLOWED" />
@@ -185,8 +185,6 @@
 	<android min-sdk-version="19" />
 	<certificate path="doors-keystore.keystore" password="doorsmobile" alias="doorsmobile" alias-password="doorsmobile" unless="test"/> <!--<cream DEIXA MEU LIME TEST EM PAZZZZZZZZZZZZZZZZZZZZZZZZZZZZ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA sem picanha para vc-->
 </section>
-
-	<window vsync="true" antialiasing="4" if="cpp" />
 
 	<!--Disable the Flixel core sound tray-->
 	<!--<haxedef name="FLX_NO_SOUND_TRAY" />-->
