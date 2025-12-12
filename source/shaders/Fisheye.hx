@@ -22,9 +22,7 @@ class Fisheye extends FlxBasic{
 class FisheyeGLSL extends FlxShader{
     @:glFragmentSource('
         #pragma header
-        vec2 uv = openfl_TextureCoordv.xy;
-        vec2 fragCoord = openfl_TextureCoordv*openfl_TextureSize;
-        vec2 iResolution = openfl_TextureSize;
+
         #define iChannel0 bitmap
         #define texture flixel_texture2D
         #define fragColor gl_FragColor
@@ -43,6 +41,9 @@ class FisheyeGLSL extends FlxShader{
 
         void main()
         {
+            vec2 uv = openfl_TextureCoordv.xy;
+            vec2 fragCoord = openfl_TextureCoordv*openfl_TextureSize;
+            vec2 iResolution = openfl_TextureSize;
             float theAlpha = flixel_texture2D(bitmap,openfl_TextureCoordv.xy).a;
             vec2 fromCentre = uv - vec2(0.5, 0.5);
             fromCentre.y *= iResolution.y / iResolution.x;
