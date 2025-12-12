@@ -24,9 +24,6 @@ class GlitchCharGLSL extends FlxShader{
     @:glFragmentSource('
         //SHADERTOY PORT FIX
         #pragma header
-        vec2 uv = openfl_TextureCoordv.xy;
-        vec2 fragCoord = openfl_TextureCoordv*openfl_TextureSize;
-        vec2 iResolution = openfl_TextureSize;
         uniform float iTime;
         #define iChannel0 bitmap
         #define texture flixel_texture2D
@@ -34,7 +31,6 @@ class GlitchCharGLSL extends FlxShader{
         #define mainImage main
         //****MAKE SURE TO remove the parameters from mainImage.
         //SHADERTOY PORT FIX
-        
         
         //2D (returns 0 - 1)
         float random2d(vec2 n) { 
@@ -56,7 +52,8 @@ class GlitchCharGLSL extends FlxShader{
         
         void mainImage()
         {
-            
+            vec2 fragCoord = openfl_TextureCoordv*openfl_TextureSize;
+            vec2 iResolution = openfl_TextureSize;
             float time = floor(iTime * SPEED * 60.0);    
             vec2 uv = fragCoord.xy / iResolution.xy;
             
