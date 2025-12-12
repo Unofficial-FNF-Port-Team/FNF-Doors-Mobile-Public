@@ -87,11 +87,10 @@ uniform float alphaThreshold;
 uniform int octaves;
 uniform float persistence;
 uniform float lacunarity;
-const vec2 pSize = vec2(1,1);
 
 // Simplex 2D noise
 vec3 permute(vec3 x){return mod(((x*34.)+1.)*x,289.);}
-
+const vec2 pSize = vec2(1.0,1.0);
 float snoise(vec2 v){
     const vec4 C=vec4(.211324865405187,.366025403784439,
     -.577350269189626,.024390243902439);
