@@ -120,4 +120,4 @@ class FlxHitbox extends FlxMobileInputManager
 		#end
 		return hint;
 	}
-}if
+}
