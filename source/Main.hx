@@ -155,7 +155,7 @@ class Main extends Sprite
 
 		// Data folder
 		if (!MobileUtil.areAssetsCopied("assets/"))
-			extension.androidtools.Tools.showAlertDialog("FNF: Doors Requirement", "Please copy the Assets folder from the APK to " + MobileUtil.getDirectory() + ", so you can play", {name: "OK", func: Sys.exit(1)}, null);
+			extension.androidtools.Tools.showAlertDialog("FNF: Doors Requirement", "Please copy the Assets folder from the APK to " + MobileUtil.getDirectory() + ", so you can play", {name: "OK", func: null}, null);
 		#end
 		
 		Controls.instance = new Controls();
