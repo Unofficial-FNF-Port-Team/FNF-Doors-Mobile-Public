@@ -15,6 +15,7 @@ import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.display.StageScaleMode;
 import gamejolt.*;
+import sys.FileSystem;
 
 //crash handler stuff
 #if CRASH_HANDLER
