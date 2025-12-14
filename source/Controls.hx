@@ -285,7 +285,7 @@ class Controls
 		if (isInSubstate)
 			return MusicBeatSubstate.instance.mobileControls.current.target;
 		else
-			return Playstate.instance.mobileControls.current.target;
+			return PlayState.instance.mobileControls.current.target;
 	}
 
 	// IGNORE THESE
