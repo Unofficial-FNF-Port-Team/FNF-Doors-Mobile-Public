@@ -112,7 +112,7 @@ class OvertimeHealthDrain extends MechanicsManager
 			if (!eyesState) game.health -= ((diff+2)/1000) * 60 * elapsed * multiplier;
 		}
 		
-		if (FlxG.keys.justPressed.SPACE)
+		if (FlxG.keys.justPressed.SPACE #if mobile || PlayState.instance.mobileControls.hitbox.buttonAction.justPressed #end)
 		{
 			if(!eyesState)
 			{
