@@ -117,6 +117,11 @@ class FreeplayModifierSelectSubState extends MusicBeatSubstate
         });
         menu.add(filters);
 
+		#if mobile
+		addVirtualPad(UP_DOWN, NONE);
+		addVirtualPadCamera();
+		#end
+
         startGaming();
         changeSelection(0, false);
         changeSelection(-1, false);
