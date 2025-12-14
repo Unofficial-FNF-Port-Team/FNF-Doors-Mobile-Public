@@ -272,6 +272,11 @@ class CreditsState extends MusicBeatState
 		fullBlack.scrollFactor.set();
 		add(fullBlack);
 
+		#if mobile
+		addVirtualPad(LEFT_RIGHT, A_B);
+		addVirtualPadCamera();
+		#end
+
 		hrisAmbience = new FlxSound();
 		hrisAmbience.loadEmbedded(Paths.music("hrisAmbience"));
 		hrisAmbience.looped = true;
