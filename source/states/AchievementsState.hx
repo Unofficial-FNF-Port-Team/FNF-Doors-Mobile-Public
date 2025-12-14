@@ -153,6 +153,11 @@ class AchievementsState extends MusicBeatState
         
         add(bgGradient);
 
+		#if mobile
+		addVirtualPad(UP_DOWN, B);
+		addVirtualPadCamera();
+		#end
+
         super.create();
     }
     var goingBack:Bool = false;
