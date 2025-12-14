@@ -1357,6 +1357,7 @@ class PlayState extends MusicBeatState
 				}
 		   }
 			mobileControls.visible = false;
+			keysCheck();
 		#end
 
 		strumLine = new FlxSprite(ClientPrefs.data.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X, 50).makeSolid(FlxG.width, 10);
