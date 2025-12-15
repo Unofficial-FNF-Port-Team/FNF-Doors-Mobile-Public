@@ -36,6 +36,7 @@ class FreeplayModifierSelectSubState extends MusicBeatSubstate
         song = songFile;
         this.chooseSongCallback = chooseSongCallback;
         super();
+		controls.isInSubstate = true;
 
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
 
