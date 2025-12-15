@@ -14,6 +14,7 @@ class BobsBookSubState extends StoryModeSubState {
 
     public function new(){
         super();
+		controls.isInSubstate = true;
 
         Paths.image("bobsBook/cover");
         pageBackground = new FlxSprite(0, 0).loadGraphic(Paths.image("bobsBook/blank"));
