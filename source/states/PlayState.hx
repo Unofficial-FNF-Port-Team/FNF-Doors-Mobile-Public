@@ -1356,6 +1356,7 @@ class PlayState extends MusicBeatState
 				  addMobileControls(false);
 				}
 		   }
+			controls.controllerMode = true;
 			mobileControls.visible = false;
 		#end
 
