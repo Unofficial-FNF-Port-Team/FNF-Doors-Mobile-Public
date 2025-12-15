@@ -3086,7 +3086,7 @@ class PlayState extends MusicBeatState
 	{
 		if(finishTimer != null || vocalsFinished) return;
 
-		trace("=== FLXG.SOUND.MUSIC ===");
+	/*	trace("=== FLXG.SOUND.MUSIC ===");
 		trace(FlxG.sound.music == null);
 		trace(FlxG.sound.music.playing);
 		trace(FlxG.sound.music.active);
@@ -3102,7 +3102,7 @@ class PlayState extends MusicBeatState
 		trace(vocals);
 		trace("=== VOCALS ===");
 		
-		trace('resynced vocals at ' + Math.floor(Conductor.songPosition));
+		trace('resynced vocals at ' + Math.floor(Conductor.songPosition));*/
 
 		FlxG.sound.music.play();
 		FlxG.sound.music.pitch = playbackRate;
@@ -3115,7 +3115,7 @@ class PlayState extends MusicBeatState
 			if(!vocals.active && !paused){
 				vocals.loadEmbedded(Paths.voices(PlayState.SONG.song));
 			}
-			trace("made vocals play");
+		//	trace("made vocals play");
 		} else {
 			vocals.pause();
 		}
