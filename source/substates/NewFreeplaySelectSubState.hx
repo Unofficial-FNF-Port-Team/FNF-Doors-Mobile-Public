@@ -78,6 +78,7 @@ class NewFreeplaySelectSubState extends MusicBeatSubstate
 	public function new(parentState:NewFreeplayState, categoryName:String)
 	{
 		super();
+		controls.isInSubstate = true;
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
 
 		instance = this;
