@@ -36,6 +36,7 @@ class SongLeaderboardSubstate extends MusicBeatSubstate
 	public function new(songname:String, diff:String, ?songFile:String)
     {
         super();
+		controls.isInSubstate = true;
         
         this.songname = songname;
         this.songFile = songFile;
