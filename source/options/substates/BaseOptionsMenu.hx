@@ -56,6 +56,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 	public function new(?isFirstOpen:Bool = false)
 	{
 		super();
+		controls.isInSubstate = true;
 		ClientPrefs.saveSettings();
 		
 		for(i in 0...options.length){
