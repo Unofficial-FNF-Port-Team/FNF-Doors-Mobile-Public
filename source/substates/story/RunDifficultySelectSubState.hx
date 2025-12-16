@@ -175,6 +175,9 @@ class RunDifficultySelectSubState extends StoryModeSubState
 				doShit();
 			}
 
+			if(controls.isInSubstate == true)
+			  controls.isInSubstate = true;
+
 			leftSelector.checkOverlap(this.cameras[0]);
 			rightSelector.checkOverlap(this.cameras[0]);
 			
