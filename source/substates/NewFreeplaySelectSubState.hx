@@ -232,14 +232,14 @@ class NewFreeplaySelectSubState extends MusicBeatSubstate
 		if(canInteract){
 			var upScroll = FlxG.mouse.wheel > 0;
 			var downScroll = FlxG.mouse.wheel < 0;
-			if(controls.UI_UP_P){ changeSelection(-1); }
+			if(controls.UI_UP_P || MusicBeatSubstate.instance.virtualPad.buttonUp.justPressed){ changeSelection(-1); }
 			if(upScroll){ changeSelection(-1); }
-			if(controls.UI_DOWN_P){ changeSelection(1); }
+			if(controls.UI_DOWN_P || MusicBeatSubstate.instance.virtualPad.buttonDown.justPressed){ changeSelection(1); }
 			if(downScroll){ changeSelection(1); }
-			if(controls.UI_LEFT_P){ changeDifficulty(-1); }
-			if(controls.UI_RIGHT_P){ changeDifficulty(1); }
+			if(controls.UI_LEFT_P || MusicBeatSubstate.instance.virtualPad.buttonLeft.justPressed){ changeDifficulty(-1); }
+			if(controls.UI_RIGHT_P || MusicBeatSubstate.instance.virtualPad.buttonRight.justPressed){ changeDifficulty(1); }
 
-			if(controls.ACCEPT){
+			if(controls.ACCEPT || MusicBeatSubstate.instance.virtualPad.buttonA.justPressed){
 				chooseSong();
 			}
 
@@ -248,7 +248,7 @@ class NewFreeplaySelectSubState extends MusicBeatSubstate
 
 			if(FlxG.keys.justPressed.SEVEN) { DoorsUtil.addKnobs(100, 1.0); }
 			
-			if (controls.BACK) {
+			if (controls.BACK || MusicBeatSubstate.instance.virtualPad.buttonB.justPressed) {
 				stopGaming();
 			}
 			leaderboardsButton.checkOverlap(this.cameras[0]);
