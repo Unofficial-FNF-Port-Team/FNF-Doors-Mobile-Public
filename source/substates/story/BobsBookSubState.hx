@@ -51,7 +51,7 @@ class BobsBookSubState extends StoryModeSubState {
                 changePage(1);
             } else if(controls.UI_LEFT_P){
                 changePage(-1);
-            } else if(controls.BACK || controls.ACCEPT || FlxG.mouse.justPressed){
+            } else if(controls.BACK || controls.ACCEPT
                 stopGaming();
             }
         }
