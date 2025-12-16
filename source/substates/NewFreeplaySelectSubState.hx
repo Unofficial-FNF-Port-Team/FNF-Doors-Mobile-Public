@@ -243,7 +243,7 @@ class NewFreeplaySelectSubState extends MusicBeatSubstate
 				chooseSong();
 			}
 
-			if(controls.isInSubstate == true)
+			if(controls.isInSubstate == false)
 			  controls.isInSubstate = true;
 
 			if(FlxG.keys.justPressed.SEVEN) { DoorsUtil.addKnobs(100, 1.0); }
