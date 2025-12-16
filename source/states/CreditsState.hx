@@ -392,6 +392,9 @@ class CreditsState extends MusicBeatState
 				if (controls.UI_RIGHT_P)
 					scroll = Math.round((scroll + FlxG.width) / FlxG.width) * FlxG.width;
 			}
+
+			if(controls.isInSubstate == true)
+			  controls.isInSubstate = true;
 	
 			camPos.x = FlxMath.lerp(camPos.x, scroll+(FlxG.width*0.5), elapsed*12); //lerp cam pos to scroll
 	
