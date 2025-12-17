@@ -80,9 +80,8 @@ class Main extends Sprite
 		CrashHandler.initialize();
 		CrashHandler.queryStatus();
 
-		AudioSwitchFix.init();
-		
 		#if windows
+		AudioSwitchFix.init(); // Mobile ja arruma o audio, então n precisamos disso
 		CppAPI.darkMode();
      	#end
 
@@ -95,10 +94,8 @@ class Main extends Sprite
 		// this shouldn't be needed for other systems
 		// Credit to YoshiCrafter29 for finding this function
 		#if windows
-		untyped __cpp__("SetProcessDPIAware();");
-		#end
-		
-		#if windows
+		untyped __cpp__("SetProcessDPIAware();");	
+
 		var display = lime.system.System.getDisplay(0);
 		if (display != null) {
 			var dpiScale:Float = display.dpi / 96;
@@ -160,8 +157,9 @@ class Main extends Sprite
 		
 		Controls.instance = new Controls();
 		ClientPrefs.loadDefaultKeys();
-		addChild(new FlxGame(gameWidth, gameHeight, initialState, #if (flixel < "5.0.0") 1, #end framerate, framerate, skipSplash, startFullscreen));
 
+		addChild(new FlxGame(gameWidth, gameHeight, initialState, #if (flixel < "5.0.0") 1, #end framerate, framerate, skipSplash, startFullscreen));
+		
 		#if ALLOW_MULTITHREADING
 		for(i in 0...4)
 			gameThreads.push(Thread.createWithEventLoop(function() {Thread.current().events.promise();}));
