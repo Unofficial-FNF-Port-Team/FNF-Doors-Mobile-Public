@@ -140,6 +140,23 @@ class Screech extends BaseSMMechanic {
 			screechLeave.animation.finished = false;
 			MenuSongManager.playSound("screechCaught", 0.6);
 		}
+
+		#if mobile
+		for (touch in FlxG.touches.list)
+		{
+			if (touch.justPressed)
+			{
+				currentState = Dodged;
+			    screechLeave.visible = true;
+			    screechLeave.animation.play('stop', true, false, 6);
+			    screechJumpscare.visible = false;
+			    FlxTween.tween(spacebarPrompt, {alpha: 0}, 0.6);
+			    screechLeave.animation.finishCallback = null;
+			    screechLeave.animation.finished = false;
+			    MenuSongManager.playSound("screechCaught", 0.6);
+			}
+		}
+		#end
 	}
 
 	private function handleActiveState(elapsed:Float) {

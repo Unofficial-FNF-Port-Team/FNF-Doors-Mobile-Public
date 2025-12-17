@@ -117,6 +117,21 @@ class DoorsVideo extends FlxSpriteGroup {
 			{
 				holdingTime = Math.max(0, FlxMath.lerp(holdingTime, -0.1, FlxMath.bound(elapsed * 3, 0, 1)));
 			}
+
+			#if mobile
+		    for (touch in FlxG.touches.list)
+		    {
+			  if(canSkip) {
+			    if (touch.pressed)
+			    {
+				   holdingTime = Math.max(0, Math.min(_timeToSkip, holdingTime + elapsed));
+			    } else if (holdingTime > 0) {
+				   holdingTime = Math.max(0, FlxMath.lerp(holdingTime, -0.1, FlxMath.bound(elapsed * 3, 0, 1)));
+				}
+			  }
+		    }
+		    #end
+			
 			updateSkipAlpha();
 
 			if(holdingTime >= _timeToSkip)

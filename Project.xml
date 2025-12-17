@@ -187,6 +187,8 @@
 	<certificate path="doors-keystore.keystore" password="doorsmobile" alias="doorsmobile" alias-password="doorsmobile" unless="test"/> <!--<cream DEIXA MEU LIME TEST EM PAZZZZZZZZZZZZZZZZZZZZZZZZZZZZ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA sem picanha para vc-->
 </section>
 
+	<window vsync="true" antialiasing="4" if="cpp" />
+
 	<!--Disable the Flixel core sound tray-->
 	<!--<haxedef name="FLX_NO_SOUND_TRAY" />-->
 

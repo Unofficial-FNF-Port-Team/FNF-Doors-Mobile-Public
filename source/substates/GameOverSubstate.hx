@@ -127,7 +127,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		
 		setupMenu();
 		startGaming();
-		#if mobile PlayState.instance.mobileControls.visible = false; #end
+		#if mobile if(PlayState.instance != null) PlayState.instance.mobileControls.visible = false; #end
 
 		checkAchievements();
 	}

@@ -84,6 +84,11 @@ class SongLeaderboardSubstate extends MusicBeatSubstate
         leaderboardScores = new FlxTypedSpriteGroup<DoorsScore>(8, 148);
         theActualMenu.add(leaderboardScores);
 
+		#if mobile
+		addVirtualPad(UP_DOWN, B);
+		addVirtualPadCamera();
+		#end
+
         updateText();
         startGaming();
     }
