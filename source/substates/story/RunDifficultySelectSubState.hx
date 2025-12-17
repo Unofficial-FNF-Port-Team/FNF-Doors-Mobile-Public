@@ -154,7 +154,7 @@ class RunDifficultySelectSubState extends StoryModeSubState
 	override function update(elapsed:Float)
 	{
 		if(!left){
-			if(controls.ACCEPT){
+			if(controls.ACCEPT || virtualPad.buttonA.justPressed){
 				if(curDifficulty == CoolUtil.defaultDifficulties.length - 1){
 					cameras[0].shake(0.02, 0.05, true);
 					fancyDifficulty.text = Lang.getText("wip", "generalshit");
