@@ -168,9 +168,9 @@ class NewFreeplayState extends MusicBeatState
 		if(!inBook && !isWatchingAnimation){
 			leftSelector.checkOverlap(camHUD);
 			rightSelector.checkOverlap(camHUD);
-			if(controls.UI_LEFT_P || (leftSelector.isHovered && FlxG.mouse.justPressed)){
+			if(controls.UI_LEFT_P #if desktop || (leftSelector.isHovered && FlxG.mouse.justPressed) #end){
 				changeCategory(-1);
-			} else if (controls.UI_RIGHT_P || (rightSelector.isHovered && FlxG.mouse.justPressed)){
+			} else if (controls.UI_RIGHT_P #if desktop || (rightSelector.isHovered && FlxG.mouse.justPressed) #end){
 				changeCategory(1);
 			}
 
