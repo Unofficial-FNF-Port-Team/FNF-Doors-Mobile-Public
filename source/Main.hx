@@ -115,7 +115,6 @@ class Main extends Sprite
 		MobileUtil.copySpesificFileFromAssets('mobile/storageModes.txt', MobileUtil.getCustomStoragePath());
 		#end
 		Sys.setCwd(MobileUtil.getStorageDirectory());
-		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
 		#end
 
 		super();
