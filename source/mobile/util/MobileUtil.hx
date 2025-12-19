@@ -1,4 +1,4 @@
-package mobile.utils;
+package mobile.util;
 
 #if android
 import extension.androidtools.callback.CallBack as AndroidCallBack;
