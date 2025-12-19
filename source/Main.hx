@@ -108,8 +108,8 @@ class Main extends Sprite
 		#end
 
 		#if mobile
-		MobileUtil.getPermissions();
 		MobileUtil.initDirectory(); //do not make this jobs everytime
+		MobileUtil.getPermissions();
 		MobileUtil.copySpesificFileFromAssets('mobile/storageModes.txt', MobileUtil.getCustomStoragePath());
 		#end
 
