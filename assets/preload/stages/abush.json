@@ -6,5 +6,5 @@
     "boyfriend": [200, 100],
     "girlfriend": [130, 100],
     "opponent": [-70, 20],
-    "secOpponent": [0, -1200]
+    "secOpponent": [0, 0]
 }

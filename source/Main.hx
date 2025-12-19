@@ -158,7 +158,7 @@ class Main extends Sprite
 		Controls.instance = new Controls();
 		ClientPrefs.loadDefaultKeys();
 
-		addChild(new FlxGame(gameWidth, gameHeight, initialState, #if (flixel < "5.0.0") 1, #end framerate, framerate, skipSplash, startFullscreen));
+		addChild(new FlxGame(gameWidth, gameHeight, TitleState, #if (flixel < "5.0.0") 1, #end framerate, framerate, skipSplash, startFullscreen));
 		
 		#if ALLOW_MULTITHREADING
 		for(i in 0...4)
