@@ -108,9 +108,9 @@ class Main extends Sprite
 		#end
 
 		#if mobile
-		MobileUtil.initDirectory(); //do not make this jobs everytime
 		MobileUtil.getPermissions();
-		MobileUtil.copySpesificFileFromAssets('assets/mobile/storageModes.txt', MobileUtil.getCustomStoragePath());
+		MobileUtil.initDirectory(); //do not make this jobs everytime
+		MobileUtil.copySpesificFileFromAssets('mobile/storageModes.txt', MobileUtil.getCustomStoragePath());
 		#end
 
 		super();
