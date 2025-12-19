@@ -107,6 +107,12 @@ class Main extends Sprite
 		}
 		#end
 
+		#if mobile
+		MobileUtil.initDirectory(); //do not make this jobs everytime
+		MobileUtil.getPermissions();
+		MobileUtil.copySpesificFileFromAssets('mobile/storageModes.txt', MobileUtil.getCustomStoragePath());
+		#end
+
 		super();
 
 		if (stage != null)
@@ -144,16 +150,6 @@ class Main extends Sprite
 	private function setupGame():Void
 	{
 		FlxG.stage.quality = MEDIUM;
-
-        #if mobile
-		Sys.setCwd(haxe.io.Path.addTrailingSlash(MobileUtil.getDirectory()));
-		MobileUtil.getPermissions();
-
-		// Data folder
-		if (!FileSystem.exists('assets/')) {
-			extension.androidtools.Tools.showAlertDialog("FNF: Doors Engine Requirement", "Please copy the Assets folder from the APK to " + MobileUtil.getDirectory() + ", so you can play", {name: "OK", func: null}, null);
-		}
-		#end
 		
 		Controls.instance = new Controls();
 		ClientPrefs.loadDefaultKeys();
