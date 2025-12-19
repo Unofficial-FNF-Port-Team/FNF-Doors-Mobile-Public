@@ -65,7 +65,9 @@ class FPSCounter extends TextField
 
 		currentFPS = times.length < FlxG.updateFramerate ? times.length : FlxG.updateFramerate;		
 		updateText();
+		#if mobile
 		setScale();
+		#end
 		deltaTimeout += deltaTime;
 	}
 

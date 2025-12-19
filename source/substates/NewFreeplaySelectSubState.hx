@@ -232,14 +232,14 @@ class NewFreeplaySelectSubState extends MusicBeatSubstate
 		if(canInteract){
 			var upScroll = FlxG.mouse.wheel > 0;
 			var downScroll = FlxG.mouse.wheel < 0;
-			if(controls.UI_UP_P || virtualPad.buttonUp.justPressed){ changeSelection(-1); }
+			if(controls.UI_UP_P #if mobile || virtualPad.buttonUp.justPressed #end){ changeSelection(-1); }
 			if(upScroll){ changeSelection(-1); }
-			if(controls.UI_DOWN_P || virtualPad.buttonDown.justPressed){ changeSelection(1); }
+			if(controls.UI_DOWN_P #if mobile || virtualPad.buttonDown.justPressed #end){ changeSelection(1); }
 			if(downScroll){ changeSelection(1); }
-			if(controls.UI_LEFT_P || virtualPad.buttonLeft.justPressed){ changeDifficulty(-1); }
-			if(controls.UI_RIGHT_P || virtualPad.buttonRight.justPressed){ changeDifficulty(1); }
+			if(controls.UI_LEFT_P  #if mobile || virtualPad.buttonLeft.justPressed #end){ changeDifficulty(-1); }
+			if(controls.UI_RIGHT_P #if mobile || virtualPad.buttonRight.justPressed #end){ changeDifficulty(1); }
 
-			if(controls.ACCEPT || virtualPad.buttonA.justPressed){
+			if(controls.ACCEPT #if mobile || virtualPad.buttonA.justPressed #end){
 				chooseSong();
 			}
 
@@ -248,7 +248,7 @@ class NewFreeplaySelectSubState extends MusicBeatSubstate
 
 			if(FlxG.keys.justPressed.SEVEN) { DoorsUtil.addKnobs(100, 1.0); }
 			
-			if (controls.BACK || virtualPad.buttonB.justPressed) {
+			if (controls.BACK  #if mobile || virtualPad.buttonB.justPressed #end) {
 				stopGaming();
 			}
 			leaderboardsButton.checkOverlap(this.cameras[0]);
