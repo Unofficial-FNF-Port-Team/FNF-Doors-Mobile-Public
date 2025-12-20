@@ -114,6 +114,9 @@ class Main extends Sprite
 
 		if (!MobileUtil.areAssetsCopied("assets/"))
 			MobileUtil.copyAssetsFromAPK("assets/");
+
+		if (!MobileUtil.areAssetsCopied("assets/videos/"))
+			MobileUtil.copyAssetsFromAPK("assets/videos/");
 		#end
 
 		super();
