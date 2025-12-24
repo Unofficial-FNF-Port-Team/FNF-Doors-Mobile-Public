@@ -16,8 +16,7 @@ import openfl.events.Event;
 import openfl.display.StageScaleMode;
 import gamejolt.*;
 import sys.FileSystem;
-
-//crash handler stuff
+// crash handler stuff
 #if CRASH_HANDLER
 import lime.app.Application;
 import openfl.events.UncaughtErrorEvent;
@@ -28,11 +27,9 @@ import sys.FileSystem;
 import sys.io.File;
 import sys.io.Process;
 #end
-
 #if ALLOW_MULTITHREADING
 import sys.thread.Thread;
 #end
-
 #if mobile
 import mobile.util.MobileUtil;
 import openfl.events.UncaughtErrorEvent;
@@ -47,7 +44,6 @@ using StringTools;
 	<lib name="dwmapi.lib" if="windows" />
 </target>
 ')
-
 @:cppFileCode('
 #include <windows.h>
 #include <winuser.h>
@@ -55,7 +51,6 @@ using StringTools;
 extern "C" HRESULT WINAPI SetCurrentProcessExplicitAppUserModelID(PCWSTR AppID);
 ')
 #end
-
 class Main extends Sprite
 {
 	var mouse:DoorsMouse;
@@ -84,21 +79,22 @@ class Main extends Sprite
 		#if windows
 		AudioSwitchFix.init(); // Mobile ja arruma o audio, então n precisamos disso
 		CppAPI.darkMode();
-     	#end
+		#end
 
 		Lib.current.addChild(new Main());
 	}
 
 	public function new()
 	{
-		// DPI Scaling fix for windows 
+		// DPI Scaling fix for windows
 		// this shouldn't be needed for other systems
 		// Credit to YoshiCrafter29 for finding this function
 		#if windows
-		untyped __cpp__("SetProcessDPIAware();");	
+		untyped __cpp__("SetProcessDPIAware();");
 
 		var display = lime.system.System.getDisplay(0);
-		if (display != null) {
+		if (display != null)
+		{
 			var dpiScale:Float = display.dpi / 96;
 			Application.current.window.width = Std.int(gameWidth * dpiScale);
 			Application.current.window.height = Std.int(gameHeight * dpiScale);
@@ -132,7 +128,9 @@ class Main extends Sprite
 	}
 
 	private static var __threadCycle:Int = 0;
-	public static function execAsync(func:Void->Void) {
+
+	public static function execAsync(func:Void->Void)
+	{
 		#if ALLOW_MULTITHREADING
 		var thread = gameThreads[(__threadCycle++) % gameThreads.length];
 		thread.events.run(func);
@@ -150,46 +148,49 @@ class Main extends Sprite
 
 		setupGame();
 	}
-	
+
 	public static var popupManager:PopupManager;
 
 	private function setupGame():Void
 	{
 		FlxG.stage.quality = MEDIUM;
-		
+
 		Controls.instance = new Controls();
 		ClientPrefs.loadDefaultKeys();
 
 		addChild(new FlxGame(gameWidth, gameHeight, TitleState, #if (flixel < "5.0.0") 1, #end framerate, framerate, skipSplash, startFullscreen));
-		
+
 		#if ALLOW_MULTITHREADING
-		for(i in 0...4)
-			gameThreads.push(Thread.createWithEventLoop(function() {Thread.current().events.promise();}));
+		for (i in 0...4)
+			gameThreads.push(Thread.createWithEventLoop(function()
+			{
+				Thread.current().events.promise();
+			}));
 		#end
 
 		fpsVar = new FPSCounter(10, 3, 0xFFFFFF);
 		addChild(fpsVar);
 		Lib.current.stage.align = "tl";
 		Lib.current.stage.scaleMode = StageScaleMode.NO_SCALE;
-		if(fpsVar != null) {
+		if (fpsVar != null)
+		{
 			fpsVar.visible = ClientPrefs.data.showFPS;
 		}
 
 		DoorsVideoSprite.init();
 		MenuSongManager.init();
-		
+
 		FlxG.signals.gameResized.add(fixCameraShaders);
 
 		#if android
 		FlxG.android.preventDefaultKeys = [BACK];
 		#end
-		
+
 		popupManager = new PopupManager();
 		addChild(popupManager);
 	}
 
-	
-	public static function fixCameraShaders(w:Int, h:Int) //fixes shaders after resizing the window / fullscreening
+	public static function fixCameraShaders(w:Int, h:Int) // fixes shaders after resizing the window / fullscreening
 	{
 		if (FlxG.cameras.list.length > 0)
 		{
@@ -197,7 +198,7 @@ class Main extends Sprite
 			{
 				if (cam.flashSprite != null)
 				{
-					@:privateAccess 
+					@:privateAccess
 					{
 						cam.flashSprite.__cacheBitmap = null;
 						cam.flashSprite.__cacheBitmapData = null;

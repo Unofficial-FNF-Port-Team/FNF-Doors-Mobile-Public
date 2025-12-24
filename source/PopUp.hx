@@ -69,7 +69,7 @@ class PopUp extends Sprite
         popupHeight = Math.round(popupHeight * bg.scaleY);
         popupWidth = Math.round(popupWidth * bg.scaleY);
         bg.y = getScreenHeight() - 8;
-        bg.x = getScreenWidth()-popupWidth;
+        bg.x = getScreenWidth()-popupWidth -550;
     }
 
 	public function update(deltaTime:Float)
@@ -100,7 +100,7 @@ class MessagePopup extends PopUp
         bigText.selectable = false;
         bigText.wordWrap = true;
 
-        bigText.x = getScreenWidth()-popupWidth+11;
+        bigText.x = getScreenWidth()-popupWidth -530;
         bigText.y = popupY+8;
         
         descText = new TextField();
@@ -113,14 +113,14 @@ class MessagePopup extends PopUp
         descText.selectable = false;
         descText.wordWrap = true;
 
-        descText.x = getScreenWidth()-popupWidth+11;
+        descText.x = getScreenWidth()-popupWidth -530;
         descText.y = popupY+36;
     }
     override public function update(deltaTime:Float)
     {
         super.update(deltaTime);
-        bigText.y = popupY+(8* (getScreenWidth()/1280));
-        descText.y = popupY+(36* (getScreenWidth()/1280));
+        bigText.y = popupY+(4* (getScreenWidth()/1280));
+        descText.y = popupY+(30* (getScreenWidth()/1280));
     }
 }
 class ClickableMessagePopup extends PopUp
@@ -164,8 +164,8 @@ class ClickableMessagePopup extends PopUp
     override public function update(deltaTime:Float)
     {
         super.update(deltaTime);
-        bigText.y = popupY+(8* (getScreenWidth()/1280));
-        descText.y = popupY+(36* (getScreenWidth()/1280));
+        bigText.y = popupY+(4* (getScreenWidth()/1280));
+        descText.y = popupY+(30* (getScreenWidth()/1280));
         hitbox.x = bg.x;
         hitbox.y = bg.y;
        
@@ -210,7 +210,7 @@ class AwardPopup extends PopUp
         smallText.wordWrap = true;
 
         var spriteImage:FlxSprite = new FlxSprite(0,0).loadGraphic(Paths.image('awards/${AwardsManager.getAwardImageName(award)}'));
-        spriteImage.setGraphicSize(Math.round(75 * (getScreenWidth()/1280)), Math.round(76 * (getScreenWidth()/1280)));
+        spriteImage.setGraphicSize(Math.round(60 * (getScreenWidth()/1280)), Math.round(61 * (getScreenWidth()/1280)));
         spriteImage.updateHitbox();
         image = new Bitmap(spriteImage.updateFramePixels()); //easy flixel to openfl shit
         addChild(image);
@@ -218,16 +218,16 @@ class AwardPopup extends PopUp
         image.scaleX = spriteImage.scale.x;
         image.scaleY = spriteImage.scale.y;
 
-        bigText.x = getScreenWidth()-popupWidth+11;
-        smallText.x = getScreenWidth()-popupWidth+11;
-        image.x = getScreenWidth()-(78 * bg.scaleX);
+        bigText.x = getScreenWidth()-popupWidth-530;
+        smallText.x = getScreenWidth()-popupWidth-530;
+        image.x = getScreenWidth()-(268 * bg.scaleX);
     }
     override public function update(deltaTime:Float)
     {
         super.update(deltaTime);
-        bigText.y = popupY+(8* (getScreenWidth()/1280));
-        smallText.y = popupY+(36* (getScreenWidth()/1280));
-        image.y = popupY+(3* (getScreenWidth()/1280));
+        bigText.y = popupY+(4* (getScreenWidth()/1280));
+        smallText.y = popupY+(30* (getScreenWidth()/1280));
+        image.y = popupY+(4* (getScreenWidth()/1280));
     }
 }
 
