@@ -58,7 +58,9 @@ class TitleState extends MusicBeatState
 	private static var hasCheckedUpdates:Bool = false;
 	
 	// Instance variables
+	#if desktop
 	private var report:Null<UpdateCheckCallback>;
+	#end
 	private var skippedIntro:Bool = false;
 	private var sickSteps:Int = 0; // Basically curStep but won't be skipped if you hold the tab or resize the screen
 	
@@ -478,9 +480,11 @@ class TitleState extends MusicBeatState
 			skippedIntro = true;
 			
 			// Check for updates and show update screen if needed
+			#if desktop
 			if (report != null && report.newUpdate) {
 				FlxG.switchState(new backend.updating.UpdateAvailableScreen(report));
 			}
+			#end
 			closedState = true;
 		}
 	}
